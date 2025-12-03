@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Local SQLite DB
+*.db
+
+# Virtual environments
+venv/
+.env/
+
+# Editor settings
+.vscode/
+.idea/
+
+# Test images or temp files
+app/test-images/
+tests/data/
+
+# OS files
+.DS_Store
+Thumbs.db

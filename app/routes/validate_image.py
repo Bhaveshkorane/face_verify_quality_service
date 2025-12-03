@@ -26,6 +26,7 @@ async def validate_image(file: UploadFile = File(...)):
 
     try:
         face_count = detect_faces(contents)
+        print(f"Detected face count: {face_count}")
     except Exception:
         return build_response(False, "Invalid or unsupported image.", 0, 0.0, "REJECTED")
 
@@ -39,5 +40,6 @@ async def validate_image(file: UploadFile = File(...)):
     if face_count > 1:
         return build_response(False, "Multiple faces detected.", face_count, blur_score, "REJECTED")
 
-    record_quality(filename=getattr(file, 'filename', None), face_count=face_count, blur_score=blur_score)
+    # for adding into database
+    # record_quality(filename=getattr(file, 'filename', None), face_count=face_count, blur_score=blur_score)
     return build_response(True, "Image accepted.", face_count, blur_score, "RECORDED")
